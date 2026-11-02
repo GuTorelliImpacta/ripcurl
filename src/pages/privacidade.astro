@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import { site } from '../data/site';
+---
+<Base
+  title="Política de privacidade | Rip Curl Brasil"
+  description="Como este site trata dados pessoais: não usa cookies de rastreamento e não coleta dados em formulários."
+>
+  <PageHead><h1>Privacidade</h1></PageHead>
+  <section class="section wrap" aria-labelledby="h-priv">
+    <div class="prose">
+      <h2 id="h-priv" class="h2 reveal" style="margin:0 0 0.4em">O que este site faz com seus dados.</h2>
+      <p class="reveal">Este site é informativo. Ele não tem formulários, não pede cadastro e, hoje, não usa cookies de rastreamento nem ferramentas de análise.</p>
+      <h2 class="reveal">Contato por WhatsApp e telefone</h2>
+      <p class="reveal">Ao clicar em “WhatsApp”, “Ligar”, “Como chegar” ou “Instagram”, você sai deste site e passa a seguir as regras de privacidade de cada serviço (WhatsApp/Meta, Google, Instagram). As informações que você enviar por esses canais serão usadas apenas para atender o seu contato.</p>
+      <h2 class="reveal">Mapa</h2>
+      <p class="reveal">O mapa do Google só é carregado se você clicar em “Carregar mapa”.</p>
+      <h2 class="reveal">Seus direitos</h2>
+      <p class="reveal">Conforme a Lei Geral de Proteção de Dados (Lei 13.709/2018), você pode pedir informações, correção ou exclusão dos dados que tenha enviado ao escritório. Fale com a gente pelo telefone {site.phoneDisplay}.</p>
+      <p class="small">Responsável pelo tratamento (razão social e CNPJ): a informar.</p>
+    </div>
+  </section>
+</Base>

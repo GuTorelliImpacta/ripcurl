@@ -1,0 +1,100 @@
+---
+import '@fontsource-variable/bricolage-grotesque/wdth.css';
+import '../styles/global.css';
+import Footer from '../components/Footer.astro';
+import { site, whatsappUrl, faq } from '../data/site';
+import selo from '../assets/selo.png';
+import { Image } from 'astro:assets';
+import fontUrl from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wdth-normal.woff2?url';
+
+interface Props { title: string; description: string; solid?: boolean; faqSchema?: boolean; noindex?: boolean }
+const { title, description, solid = true, faqSchema = false, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const origin = Astro.site!.origin;
+const a = site.address;
+const org = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.name,
+  url: origin + '/',
+  logo: origin + '/favicon-512.png',
+  telephone: site.phoneE164,
+  sameAs: [site.instagram],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: a.street,
+    addressLocality: a.city,
+    addressRegion: a.region,
+    postalCode: a.postalCode,
+    addressCountry: 'BR',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: site.phoneE164,
+    contactType: 'customer service',
+    availableLanguage: 'pt-BR',
+    hoursAvailable: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+      opens: '08:00',
+      closes: '17:00',
+    },
+  },
+};
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+const path = Astro.url.pathname;
+const links = [['/sobre/', 'Sobre'], ['/contato/', 'Contato'], ['/faq/', 'FAQ']];
+const fullTitle = title.includes('Rip Curl') ? title : `${title} | Rip Curl Brasil`;
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#000000" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="preload" href={fontUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={origin + '/og.jpg'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={JSON.stringify(org)} />
+    {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
+  </head>
+  <body id="topo">
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+    <header class={`nav ${solid ? 'nav--solid' : ''}`}>
+      <a class="nav__brand" href="/" aria-label="Rip Curl Brasil, página inicial">
+        <Image src={selo} alt="" width={88} height={88} loading="eager" />
+        <span>Rip Curl Brasil</span>
+      </a>
+      <nav class="nav__links" aria-label="Principal">
+        {links.map(([h, l]) => <a href={h} aria-current={path === h ? 'page' : undefined}>{l}</a>)}
+        <a class="btn" href={whatsappUrl} data-event="click_whatsapp" rel="noopener noreferrer">WhatsApp</a>
+      </nav>
+      <details class="menu">
+        <summary>Menu</summary>
+        <nav aria-label="Principal (celular)">
+          {links.map(([h, l]) => <a href={h}>{l}</a>)}
+          <a href="/privacidade/">Privacidade</a>
+        </nav>
+      </details>
+    </header>
+    <main id="conteudo"><slot /></main>
+    <Footer />
+    <script>import '../scripts/site';</script>
+  </body>
+</html>

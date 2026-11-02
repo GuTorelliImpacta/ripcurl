@@ -1,0 +1,105 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Marquee from '../components/Marquee.astro';
+import FaqList from '../components/FaqList.astro';
+import { site, addressLine, whatsappUrl, telUrl, mapsUrl } from '../data/site';
+import selo from '../assets/selo.png';
+import bells from '../assets/bells-beach-2019.jpg';
+import bells2 from '../assets/bells-beach-australia.jpg';
+import torquay from '../assets/torquay-surf.jpg';
+---
+<Base
+  solid={false}
+  title="Rip Curl Brasil | Escritório em São Bernardo do Campo, SP"
+  description="Rip Curl Brasil: escritório em São Bernardo do Campo (SP). Atendimento de segunda a quinta, das 8h às 17h, por WhatsApp e telefone."
+>
+  <section class="hero" aria-labelledby="titulo">
+    <h1 class="hero__name" id="titulo">
+      <span class="reveal">Rip Curl</span>
+      <span class="hero__row2 reveal" style="--i:1">Brasil <Image class="hero__seal" src={selo} alt="" width={400} height={400} loading="eager" widths={[200, 400]} sizes="20vw" /></span>
+    </h1>
+    <Marquee />
+    <div class="hero__foot">
+      <div class="reveal" style="--i:2">
+        <p class="hero__lead">Surf de verdade desde Torquay. Fale com o escritório em São Bernardo do Campo.</p>
+        <p class="status" data-status>Atendimento de segunda a quinta, das 8h às 17h</p>
+      </div>
+      <div class="hero__actions reveal" style="--i:3">
+        <a class="btn" href={whatsappUrl} data-event="click_whatsapp" rel="noopener noreferrer">Falar no WhatsApp</a>
+        <a class="btn btn--ghost" href={telUrl} data-event="click_phone">Ligar {site.phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" aria-labelledby="h-marca">
+    <div class="grid">
+      <figure class="intro__pic reveal">
+        <Image src={bells} alt="Bells Beach, em Victoria, Austrália, durante o Rip Curl Pro em 2019" widths={[640, 960, 1280]} sizes="(max-width: 860px) 100vw, 50vw" />
+        <figcaption class="small">Bells Beach, Austrália, durante o Rip Curl Pro 2019.</figcaption>
+      </figure>
+      <div class="intro__text">
+        <h2 class="h2 reveal" id="h-marca">Nascida na onda.</h2>
+        <p class="lead reveal" style="--i:1">
+          Em 1969, em Torquay, dois amigos surfistas começaram a fazer pranchas. Logo vieram os wetsuits. Hoje, a marca é lembrada pelo Rip Curl Pro, em Bells Beach.
+        </p>
+        <p class="small reveal" style="--i:2">Fundada por Doug Warbrick e Brian Singer. Fonte: história da marca em ripcurl.com e Wikipedia.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" style="padding-top:0" aria-labelledby="h-atend">
+    <div class="grid">
+      <h2 class="h2 list__head reveal" id="h-atend">Fale com o escritório.</h2>
+      <figure class="list__pic reveal">
+        <Image src={bells2} alt="Ondas quebrando na praia de Bells Beach, na Austrália" widths={[480, 800]} sizes="(max-width: 860px) 62vw, 30vw" />
+      </figure>
+      <div class="list__table">
+        <a class="row reveal" href={whatsappUrl} data-event="click_whatsapp" rel="noopener noreferrer"><span class="k">WhatsApp</span><span class="v">Mensagem direta</span><span class="row__val">{site.phoneDisplay} →</span></a>
+        <a class="row reveal" style="--i:1" href={telUrl} data-event="click_phone"><span class="k">Telefone</span><span class="v">Ligação</span><span class="row__val">{site.phoneDisplay} →</span></a>
+        <a class="row reveal row--group" style="--i:2" href={mapsUrl} data-event="click_directions" rel="noopener noreferrer"><span class="k">Endereço</span><span class="v">{site.address.street}<br />{site.address.district}, {site.address.city} — {site.address.region}</span><span class="row__val">Como chegar →</span></a>
+        <div class="row reveal" style="--i:3"><span class="k">Segunda a quinta</span><span class="v">Atendimento</span><span class="row__val">08:00–17:00</span></div>
+        <div class="row reveal" style="--i:4"><span class="k">Sexta a domingo</span><span class="v">Escritório</span><span class="row__val">Fechado</span></div>
+        <p class="small reveal">{site.holidayNote} O endereço é o do escritório da empresa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap about on-dark" aria-labelledby="h-hist">
+    <div class="grid">
+      <div class="about__facts reveal">
+        <p><b>Desde</b>1969</p>
+        <p><b>Onde</b>Torquay, Austrália</p>
+        <p><b>No Brasil</b>São Bernardo do Campo, SP</p>
+      </div>
+      <div class="about__text">
+        <h2 class="h2 reveal" id="h-hist" style="margin-bottom:0.5em">Torquay, Trestles, Hossegor.</h2>
+        <p class="lead reveal">
+          <Image class="about__pic" src={torquay} alt="Costa de Torquay, em Victoria, Austrália" widths={[240, 480]} sizes="140px" />
+          <strong>Três nomes, um selo.</strong> O logo cita Torquay, na Austrália, Trestles, na Califórnia, e Hossegor, na França. Em São Bernardo do Campo fica o escritório da Rip Curl Brasil.
+        </p>
+        <p class="lead reveal" style="--i:1">Em 2019, a Rip Curl passou a fazer parte do grupo Kathmandu.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" aria-labelledby="h-faq">
+    <div class="grid">
+      <h2 class="h2 faq__head reveal" id="h-faq">Perguntas frequentes.</h2>
+      <FaqList limit={4} />
+    </div>
+    <p class="reveal" style="margin-top:56px"><a class="btn btn--ink" href="/faq/">Ver todas as perguntas</a></p>
+  </section>
+
+  <section class="contact" aria-labelledby="h-contato">
+    <div class="contact__top">
+      <h2 class="reveal" id="h-contato" style="font-size:var(--step-m);font-weight:700;line-height:1.1">Chame no WhatsApp.</h2>
+      <a class="btn btn--ink reveal" style="--i:1" href={whatsappUrl} data-event="click_whatsapp" rel="noopener noreferrer">Abrir conversa</a>
+    </div>
+    <a class="contact__big reveal" href={telUrl} data-event="click_phone" aria-label={`Ligar para ${site.phoneDisplay}`}>{site.phoneDisplay}</a>
+    <div class="contact__bottom">
+      <p>{addressLine}</p>
+      <a href={site.instagram} data-event="click_instagram" rel="noopener noreferrer">Instagram {site.instagramHandle}</a>
+    </div>
+  </section>
+</Base>

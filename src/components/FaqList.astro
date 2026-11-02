@@ -1,0 +1,12 @@
+---
+import { faq } from '../data/site';
+const { limit = faq.length } = Astro.props;
+---
+<div class="faq__list">
+  {faq.slice(0, limit).map((item, i) => (
+    <details class="q reveal" style={`--i:${i}`}>
+      <summary>{item.q}</summary>
+      <p>{item.a}</p>
+    </details>
+  ))}
+</div>
