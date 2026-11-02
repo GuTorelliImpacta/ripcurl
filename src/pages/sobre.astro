@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import { whatsappUrl } from '../data/site';
+import bells from '../assets/bells-beach-2019.jpg';
+---
+<Base
+  title="Sobre a Rip Curl | Rip Curl Brasil"
+  description="A história da Rip Curl: fundada em 1969 em Torquay, Austrália. Conheça a marca e o escritório da Rip Curl Brasil em São Bernardo do Campo."
+>
+  <PageHead>
+    <h1>Sobre</h1>
+    <p class="lead">De Torquay para as ondas do mundo todo.</p>
+  </PageHead>
+  <section class="section wrap" aria-labelledby="h-hist">
+    <div class="grid">
+      <div class="prose" style="grid-column:1/8">
+        <h2 id="h-hist" class="h2 reveal" style="margin:0 0 0.4em">A história da marca</h2>
+        <p class="reveal">A Rip Curl nasceu em 1969, em Torquay, no estado de Victoria, na Austrália. Os amigos surfistas Doug “Claw” Warbrick e Brian “Sing Ding” Singer começaram fazendo pranchas e, pouco depois, passaram a produzir wetsuits.</p>
+        <p class="reveal">Warbrick é lembrado como figura central do campeonato de Bells Beach, hoje o Rip Curl Pro, considerado o campeonato de surf anual mais antigo do mundo em funcionamento contínuo.</p>
+        <p class="reveal">Desde 2019, a Rip Curl faz parte do grupo Kathmandu.</p>
+        <dl class="timeline">
+          <div class="reveal"><dt>1969</dt><dd>Warbrick e Singer se encontram em Torquay e começam a fazer pranchas.</dd></div>
+          <div class="reveal"><dt>1980</dt><dd>A empresa muda para a sede atual, na Surfcoast Highway, em Torquay.</dd></div>
+          <div class="reveal"><dt>2019</dt><dd>A Rip Curl é adquirida pelo grupo Kathmandu.</dd></div>
+        </dl>
+        <p class="small reveal">Fontes: <a href="https://www.ripcurl.com/pages/the-beginning" rel="noopener noreferrer">ripcurl.com</a>, <a href="https://en.wikipedia.org/wiki/Rip_Curl" rel="noopener noreferrer">Wikipedia</a> e Peru Retail (2019). As fontes divergem sobre o ano exato dos primeiros wetsuits, 1969 ou 1970.</p>
+      </div>
+      <figure style="grid-column:9/13;align-self:start" class="reveal">
+        <Image src={bells} alt="Bells Beach, Austrália, durante o Rip Curl Pro 2019" widths={[480, 800]} sizes="(max-width: 860px) 100vw, 30vw" style="aspect-ratio:4/5;object-fit:cover" />
+        <figcaption class="small" style="margin-top:12px">Bells Beach, Rip Curl Pro 2019.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="section wrap on-dark" style="background:var(--black);color:#fff" aria-labelledby="h-br">
+    <div class="grid">
+      <h2 id="h-br" class="h2 reveal" style="grid-column:1/13;margin-bottom:0.6em">Rip Curl no Brasil.</h2>
+      <div class="prose" style="grid-column:5/13">
+        <p class="reveal">A Rip Curl Brasil mantém um escritório em São Bernardo do Campo, em São Paulo. O atendimento é de segunda a quinta, das 8h às 17h.</p>
+        <p class="reveal"><a class="btn" href={whatsappUrl} data-event="click_whatsapp" rel="noopener noreferrer">Falar no WhatsApp</a></p>
+      </div>
+    </div>
+  </section>
+</Base>

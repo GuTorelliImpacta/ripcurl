@@ -1,0 +1,8 @@
+---
+import { Image } from 'astro:assets';
+import selo from '../assets/selo.png';
+---
+<header class="page-head">
+  <div class="page-head__text"><slot /></div>
+  <Image class="page-head__seal" src={selo} alt="" width={300} height={300} widths={[160, 300]} sizes="(max-width: 640px) 34vw, 20vw" loading="eager" />
+</header>

@@ -1,0 +1,32 @@
+---
+import { site, addressLine, whatsappUrl, telUrl, mapsUrl } from '../data/site';
+const credits = [
+  { t: 'Bells Beach 2019', by: 'Michael J Fromholtz', lic: 'CC BY-SA 4.0', l: 'https://creativecommons.org/licenses/by-sa/4.0', u: 'https://commons.wikimedia.org/wiki/File:Bells_Beach_2019.jpg' },
+  { t: 'Bells Beach Australia', by: 'Mickydee2066', lic: 'CC BY-SA 4.0', l: 'https://creativecommons.org/licenses/by-sa/4.0', u: 'https://commons.wikimedia.org/wiki/File:Bells_Beach_Australia.jpg' },
+  { t: 'Torquay surf', by: 'Ameins (Wikipedia em inglês)', lic: 'domínio público', l: 'https://creativecommons.org/publicdomain/mark/1.0/', u: 'https://commons.wikimedia.org/wiki/File:Torquay_surf.jpg' },
+];
+---
+<footer class="footer">
+  <div class="footer__cols">
+    <div class="footer__places">
+      <a href={whatsappUrl} data-event="click_whatsapp" rel="noopener noreferrer">WhatsApp</a>
+      <a href={telUrl} data-event="click_phone">{site.phoneDisplay}</a>
+      <a href={mapsUrl} data-event="click_directions" rel="noopener noreferrer">Como chegar</a>
+    </div>
+    <nav class="footer__links" aria-label="Rodapé">
+      <a href="/sobre/">Sobre</a>
+      <a href="/contato/">Contato</a>
+      <a href="/faq/">Perguntas frequentes</a>
+      <a href="/privacidade/">Privacidade</a>
+      <a href={site.instagram} data-event="click_instagram" rel="noopener noreferrer">Instagram {site.instagramHandle}</a>
+    </nav>
+  </div>
+  <div class="footer__legal">
+    <p>{addressLine}. {site.legalNote}</p>
+    <p>
+      Fotos: {credits.map((c, i) => (<>{i > 0 && '; '}<a href={c.u} rel="noopener noreferrer">“{c.t}”</a> de {c.by}, <a href={c.l} rel="noopener noreferrer">{c.lic}</a>, via Wikimedia Commons</>))}.
+    </p>
+    <a href="#topo">Voltar ao topo</a>
+  </div>
+  <div class="footer__name" aria-hidden="true">Rip Curl</div>
+</footer>

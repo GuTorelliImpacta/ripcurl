@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import { site, addressLine, whatsappUrl, telUrl, mapsUrl, mapsEmbedUrl } from '../data/site';
+---
+<Base
+  title="Contato | Rip Curl Brasil, São Bernardo do Campo"
+  description="Contato da Rip Curl Brasil: WhatsApp e telefone (11) 97591-8915, endereço em São Bernardo do Campo e horário de atendimento."
+>
+  <PageHead>
+    <h1>Contato</h1>
+    <p class="lead">Escritório em São Bernardo do Campo. Atendimento de segunda a quinta, das 8h às 17h.</p>
+    <p class="status" data-status style="color:#fff">Atendimento de segunda a quinta, das 8h às 17h</p>
+  </PageHead>
+  <section class="section wrap" aria-labelledby="h-canais">
+    <div class="grid">
+      <h2 id="h-canais" class="h2 list__head reveal">Como falar com a gente.</h2>
+      <div class="list__table" style="grid-column:1/13">
+        <a class="row reveal" href={whatsappUrl} data-event="click_whatsapp" rel="noopener noreferrer"><span class="k">WhatsApp</span><span class="v">Mensagem direta</span><span class="row__val">{site.phoneDisplay} →</span></a>
+        <a class="row reveal" href={telUrl} data-event="click_phone"><span class="k">Telefone</span><span class="v">Ligação</span><span class="row__val">{site.phoneDisplay} →</span></a>
+        <a class="row reveal" href={site.instagram} data-event="click_instagram" rel="noopener noreferrer"><span class="k">Instagram</span><span class="v">Novidades</span><span class="row__val">{site.instagramHandle} →</span></a>
+        <a class="row reveal row--group" href={mapsUrl} data-event="click_directions" rel="noopener noreferrer"><span class="k">Endereço</span><span class="v">{addressLine}</span><span class="row__val">Como chegar →</span></a>
+        {site.hoursRows.map((r) => <div class="row reveal"><span class="k">{r.day}</span><span class="v">Atendimento</span><span class="row__val">{r.value}</span></div>)}
+        <p class="small reveal">{site.holidayNote} O endereço é o do escritório da empresa: antes de ir, confirme pelo WhatsApp.</p>
+      </div>
+      <div class="mapbox reveal">
+        <div>
+          <p class="lead" style="margin-bottom:24px">Mapa do escritório</p>
+          <button class="btn" type="button" data-map={mapsEmbedUrl}>Carregar mapa</button>
+          <p class="small" style="margin:20px auto 0;color:#b9bcc0">Ao carregar, o Google Maps é aberto dentro desta página.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import FaqList from '../components/FaqList.astro';
+import { whatsappUrl } from '../data/site';
+---
+<Base
+  faqSchema
+  title="Perguntas frequentes | Rip Curl Brasil"
+  description="Perguntas frequentes sobre a Rip Curl Brasil: horário, endereço em São Bernardo do Campo, como falar com o escritório e como pedir informações."
+>
+  <PageHead>
+    <h1>FAQ</h1>
+    <p class="lead">Respostas rápidas sobre o escritório da Rip Curl Brasil.</p>
+  </PageHead>
+  <section class="section wrap" aria-labelledby="h-faq">
+    <div class="grid">
+      <h2 id="h-faq" class="h2 faq__head reveal">Perguntas frequentes.</h2>
+      <FaqList />
+    </div>
+    <p class="reveal" style="margin-top:56px"><a class="btn btn--ink" href={whatsappUrl} data-event="click_whatsapp" rel="noopener noreferrer">Não achou? Chame no WhatsApp</a></p>
+  </section>
+</Base>
